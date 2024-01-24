@@ -11,7 +11,9 @@
 
             <div class="col-6 md:col-3 p-fluid">
                 <label>Vencimento</label>
-                <p-calendar dateFormat="dd/mm/yy" [inline]="false"></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy" [inline]="false" ngModel name="Vencimento" #vencimento="ngModel" [required]="true"></p-calendar>
+
+                <app-message [control]="vencimento.control" error="required" text="Selecione uma data"></app-message>
             </div>
             <div class="col-6 md:col-3 p-fluid">
                 <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
@@ -28,15 +30,21 @@
             </div>
             <div class="col-12 md:col-3 p-fluid">
                 <label>Valor</label>
-                <p-inputNumber mode="currency" currency="BRL" placeholder="0,00"></p-inputNumber>
+                <p-inputNumber mode="currency" currency="BRL" placeholder="0,00" ngModel name="valor" #valor="ngModel" [required]="true"></p-inputNumber>
+
+                <app-message [control]="valor.control" error="required" text="Informe um valor"></app-message>
             </div>
             <div class="col-12 md:col-6 p-fluid">
                 <label>Categoria</label>
-                <p-dropdown [options]="categorias" placeholder="Selecione" [showClear]="true" [filter]="true" #categoria></p-dropdown>
+                <p-dropdown [options]="categorias" placeholder="Selecione" [showClear]="true" [filter]="true" ngModel name="categoria" #categoria="ngModel" [required]="true"></p-dropdown>
+
+                <app-message [control]="categoria.control" error="required" text="Selecione uma categoria"></app-message>
             </div>
             <div class="col-12 md:col-6 p-fluid">
                 <label>Pessoa</label>
-                <p-dropdown [options]="pessoas" placeholder="Selecione" [showClear]="true" [filter]="true" #pessoa></p-dropdown>
+                <p-dropdown [options]="pessoas" placeholder="Selecione" [showClear]="true" [filter]="true" ngModel name="pessoa" #pessoa="ngModel" [required]="true"></p-dropdown>
+
+                <app-message [control]="pessoa.control" error="required" text="Selecione uma pessoa"></app-message>
             </div>
             <div class="col-12 md:col-6 p-fluid">
                 <label>Observação</label>
