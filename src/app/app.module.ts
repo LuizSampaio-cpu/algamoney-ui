@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { CalendarModule } from 'primeng/calendar';
+import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CalendarModule } from 'primeng/calendar';
     LancamentosPesquisaComponent,
     NavbarComponent,
     PessoasPesquisaComponent,
-    LancamentoCadastroComponent
+    LancamentoCadastroComponent,
+    PessoasCadastroComponent
   ],
   imports: [
     BrowserModule,
