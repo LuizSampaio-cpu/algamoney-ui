@@ -14,27 +14,16 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask'
 
 import { AppComponent } from './app.component';
-import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
-import { LancamentoCadastroComponent } from './lancamentos/lancamento-cadastro/lancamento-cadastro.component';
 import { CalendarModule } from 'primeng/calendar';
-import { PessoasCadastroComponent } from './pessoas/pessoas-cadastro/pessoas-cadastro.component';
-import { MessageComponent } from './message/message.component';
-import { LancamentosGridComponent } from './lancamentos/lancamentos-grid/lancamentos-grid.component';
-import { PessoasGridComponent } from './pessoas/pessoas-grid/pessoas-grid.component';
+import { LancamentosModule } from './lancamentos/lancamentos.module';
+import { PessoasModule } from './pessoas/pessoas.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LancamentosPesquisaComponent,
     NavbarComponent,
-    PessoasPesquisaComponent,
-    LancamentoCadastroComponent,
-    PessoasCadastroComponent,
-    MessageComponent,
-    LancamentosGridComponent,
-    PessoasGridComponent
+
   ],
   imports: [
     BrowserModule,
@@ -50,7 +39,9 @@ import { PessoasGridComponent } from './pessoas/pessoas-grid/pessoas-grid.compon
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
-    InputMaskModule
+    InputMaskModule,
+    LancamentosModule,
+    PessoasModule
 
   ],
   providers: [],

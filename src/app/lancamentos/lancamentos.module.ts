@@ -16,6 +16,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { TooltipModule } from 'primeng/tooltip';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -40,7 +41,12 @@ import { TooltipModule } from 'primeng/tooltip';
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
-    InputMaskModule
+    InputMaskModule,
+    SharedModule
+  ],
+  exports: [
+    LancamentoCadastroComponent,
+    LancamentosPesquisaComponent
   ]
 })
 export class LancamentosModule { }
