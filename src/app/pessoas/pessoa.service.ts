@@ -48,4 +48,12 @@ export class PessoaService {
 
     return this.http.get(this.pessoasUrl, {headers}).toPromise().then((response: any) => response['content']);
   }
+
+  excluir(codigo: number): Promise<any> {
+    const headers = new HttpHeaders();
+    headers.append('Authorization', 'Basic admin');
+
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`, {headers}).toPromise().then(() => null);
+
+  }
 }

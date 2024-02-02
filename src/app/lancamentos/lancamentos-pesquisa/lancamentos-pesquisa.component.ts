@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 import { LancamentoFiltro, LancamentoService } from './../lancamento.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -15,7 +17,11 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos: any[] = [];
   @ViewChild('grid') grid: any;
 
-  constructor(private lancamentoService: LancamentoService) { }
+  constructor(
+    private lancamentoService: LancamentoService,
+    private messageService: MessageService,
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService) { }
 
   ngOnInit(): void {
     //this.pesquisar();
@@ -28,7 +34,8 @@ export class LancamentosPesquisaComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.lancamentos = resultado.lancamentos;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -40,9 +47,24 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   }
 
-  excluir(lancamento:any) {
-    this.lancamentoService.excluir(lancamento.codigo).then(() => {
+  confirmarExclusao(lancamento:any) {
+    this.confirmation.confirm({
+        message: 'Tem certeza que deseja excluir?',
+        accept: () => {
+            this.excluir(lancamento)
+        } });
+  }
+
+  excluir(lancamento: any) {
+    this.lancamentoService.excluir(lancamento.codigo)
+    .then(() => {
+        if (this.grid.first === 0) {
+        this.pesquisar();
+        } else {
         this.grid.reset();
+        }
+
+        this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
     })
   }
 }

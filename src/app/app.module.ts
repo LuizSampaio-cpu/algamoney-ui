@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast'
+import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule} from 'primeng/confirmdialog'
 
 
 import { AppComponent } from './app.component';
@@ -20,12 +24,13 @@ import { LancamentoService } from './lancamentos/lancamento.service';
     FormsModule,
     HttpClientModule,
 
+
     LancamentosModule,
     PessoasModule,
     CoreModule
 
   ],
-  providers: [LancamentoService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
