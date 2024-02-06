@@ -39,10 +39,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
-    let pagina = 0;
-    if (event.first && event.rows) {
-        pagina = event.first / event.rows
-      }
+    const pagina = event!.first! / event!.rows!;
     this.pesquisar(pagina);
 
   }

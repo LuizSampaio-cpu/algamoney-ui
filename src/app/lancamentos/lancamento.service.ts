@@ -6,8 +6,8 @@ export class LancamentoFiltro {
   descricao?: string
   dataVencimentoInicio?: Date;
   dataVencimentoFim?: Date;
-  pagina = 0;
-  itensPorPagina = 5;
+  pagina: number  = 0;
+  itensPorPagina: number = 5;
 }
 
 @Injectable({
@@ -24,7 +24,7 @@ export class LancamentoService {
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
     const headers = new HttpHeaders()
-      .append('Authorization', 'Basic admin');
+
 
     let params = new HttpParams();
 
@@ -37,14 +37,14 @@ export class LancamentoService {
     }
 
     if (filtro.dataVencimentoInicio) {
-      params = params.set('dataVencimentoDe', this.datePipe.transform(filtro.dataVencimentoInicio, 'dd-MM-y')!);
+      params = params.set('dataVencimentoDe', this.datePipe.transform(filtro.dataVencimentoInicio, 'dd/MM/y')!);
     }
 
     if (filtro.dataVencimentoFim) {
-      params = params.set('dataVencimentoAte', this.datePipe.transform(filtro.dataVencimentoFim, 'dd-MM-y')!);
+      params = params.set('dataVencimentoAte', this.datePipe.transform(filtro.dataVencimentoFim, 'dd/MM/y')!);
     }
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, params })
+    return this.http.get(`${this.lancamentosUrl}?resumo&page=${filtro.pagina}&size=${filtro.itensPorPagina}`, { headers, params })
       .toPromise()
       .then((response: any) => {
         const lancamentos = response['content'];
@@ -60,7 +60,7 @@ export class LancamentoService {
 
   excluir(codigo: number): Promise<any> {
     const headers = new HttpHeaders();
-    headers.append('Authorization', 'Basic admin');
+
 
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, {headers}).toPromise().then(() => null);
 

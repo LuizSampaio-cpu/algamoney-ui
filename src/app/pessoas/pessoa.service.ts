@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 
 export class PessoaFiltro {
     nome: string = '';
-    pagina = 0;
-    itensPorPagina = 5;
+    pagina: number = 0;
+    itensPorPagina: number = 5;
 }
 
 @Injectable({
@@ -18,7 +18,7 @@ export class PessoaService {
 
   pesquisar(filtro: PessoaFiltro): Promise<any> {
 
-    const headers = new HttpHeaders().append('Authorization', 'Basic admin');
+    const headers = new HttpHeaders();
 
     let params = new HttpParams();
 
@@ -30,7 +30,7 @@ export class PessoaService {
         params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.pessoasUrl}`, {headers, params})
+    return this.http.get(`${this.pessoasUrl}?page=${filtro.pagina}&size=${filtro.itensPorPagina}`, {headers, params})
     .toPromise().then((response: any) => {
         const pessoas = response['content'];
 
@@ -44,14 +44,14 @@ export class PessoaService {
 
   listarTodas(): Promise<any> {
     const headers = new HttpHeaders();
-    headers.append('Authorization', 'Basic admin');
+
 
     return this.http.get(this.pessoasUrl, {headers}).toPromise().then((response: any) => response['content']);
   }
 
   excluir(codigo: number): Promise<any> {
     const headers = new HttpHeaders();
-    headers.append('Authorization', 'Basic admin');
+
 
     return this.http.delete(`${this.pessoasUrl}/${codigo}`, {headers}).toPromise().then(() => null);
 

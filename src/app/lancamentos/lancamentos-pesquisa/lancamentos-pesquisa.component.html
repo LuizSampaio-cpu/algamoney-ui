@@ -31,6 +31,7 @@
 
     <div class="grid">
       <div class="col-12">
+
         <p-table [value]="lancamentos" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true"
           [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" #grid>
           <ng-template pTemplate="header">
@@ -46,36 +47,34 @@
           <ng-template pTemplate="body" let-lancamento>
             <tr>
               <td>
-                <span class="p-column-title">Pessoa</span>
+                <span class="col-pessoa"></span>
                 {{ lancamento.pessoa }}
               </td>
 
               <td>
-                <span class="p-column-title">Descrição</span>
+                <span class="col-descricao"></span>
                 {{ lancamento.descricao }}
               </td>
 
               <td class="col-data">
-                <span class="p-column-title">Vencimento</span>
+                <span class="col-vencimento"></span>
                 {{ lancamento.dataVencimento | date:'dd/MM/y' }}
               </td>
 
               <td class="col-data">
-                <span class="p-column-title">Pagamento</span>
+                <span class="col-pagamento"></span>
                 {{ lancamento.dataPagamento | date:'dd/MM/y' }}
               </td>
 
               <td class="col-valor">
-                <span class="p-column-title">Valor</span>
+                <span class="col-valor"></span>
                 <span [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lancamento.valor | number:'1.2-2'
                   }}</span>
               </td>
 
               <td class="col-acoes">
-                <ng-template let-lanc="rowData" pTemplate="body">
                     <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-                    <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"(click)="confirmarExclusao(lanc)"></button>
-                </ng-template>
+                    <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"(click)="confirmarExclusao(lancamento)"></button>
               </td>
             </tr>
           </ng-template>
@@ -87,6 +86,7 @@
             </tr>
           </ng-template>
         </p-table>
+
       </div>
     </div>
 
