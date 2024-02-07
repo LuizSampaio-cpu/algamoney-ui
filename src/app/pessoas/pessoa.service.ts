@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Pessoa } from '../core/model';
+import { firstValueFrom } from 'rxjs';
 
 export class PessoaFiltro {
     nome: string = '';
@@ -56,4 +58,19 @@ export class PessoaService {
     return this.http.delete(`${this.pessoasUrl}/${codigo}`, {headers}).toPromise().then(() => null);
 
   }
-}
+
+  mudarStatus(codigo: number, ativo: boolean): Promise<any> {
+    const headers = new HttpHeaders()
+
+    return this.http.put<void>(`${this.pessoasUrl}/${codigo}/ativo`, ativo, {headers}).toPromise();
+
+  }
+  adicionar(pessoa: Pessoa): Promise<Pessoa>{
+
+        const headers = new HttpHeaders()
+          //.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+          //.append('Content-Type', 'application/json');
+
+        return firstValueFrom(this.http.post<Pessoa>(this.pessoasUrl, pessoa, { headers }));
+  }
+ }

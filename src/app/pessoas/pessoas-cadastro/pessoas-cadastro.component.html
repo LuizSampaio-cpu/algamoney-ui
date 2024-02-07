@@ -1,5 +1,5 @@
 <div class="container">
-    <form autocomplete="off">
+    <form autocomplete="off" #pessoasForm="ngForm" (ngSubmit)="salvar(pessoasForm)">
 
         <div class="grid">
             <div class="col-12">
@@ -8,7 +8,7 @@
 
             <div class="col-12 p-fluid">
                 <label>Nome</label>
-                <input pInputText type="text" ngModel name="Nome" ngModel #nome="ngModel" required minlength="4">
+                <input pInputText type="text"  name="Nome" [(ngModel)]="pessoa.nome" #nome="ngModel" required minlength="4">
 
 
                 <app-message [control]="nome.control" error="required" text="Informe um nome"></app-message>
@@ -17,7 +17,7 @@
 
             <div class="col-12 md:col-9 p-fluid">
                 <label>Logradouro</label>
-                <input pInputText type="text" ngModel name="logradouro" ngModel #logradouro="ngModel" required minlength="3">
+                <input pInputText type="text"  name="logradouro" [(ngModel)]="pessoa.endereco.logradouro" #logradouro="ngModel" required minlength="3">
 
 
                 <app-message [control]="logradouro.control" error="required" text="Informe um logradouro"></app-message>
@@ -25,38 +25,38 @@
             </div>
             <div class="col-12 md:col-3 p-fluid">
                 <label>Número</label>
-                <input pInputText type="number" ngModel name="numero" ngModel #numero="ngModel" [required]="true">
+                <input pInputText type="number"  name="numero" [(ngModel)]="pessoa.endereco.numero" #numero="ngModel" [required]="true">
 
                 <app-message [control]="numero.control" error="required" text="Informe um numero"></app-message>
             </div>
             <div class="col-12 md:col-4 p-fluid">
                 <label>Complemento</label>
-                <input pInputText type="text">
+                <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.endereco.complemento">
             </div>
             <div class="col-12 md:col-4 p-fluid">
                 <label>Bairro</label>
-                <input pInputText type="text" ngModel name="bairro" ngModel #bairro="ngModel" required minlength="3">
+                <input pInputText type="text" name="bairro" [(ngModel)]="pessoa.endereco.bairro" #bairro="ngModel" required minlength="3">
 
                 <app-message [control]="bairro.control" error="required" text="Informe um bairro"></app-message>
                 <app-message [control]="bairro.control" error="minlength" text="Mínimo de {{bairro.errors?.['minlength']?.requiredLength}} caracteres"></app-message>
             </div>
             <div class="col-12 md:col-4 p-fluid">
                 <label>CEP</label>
-                <p-inputMask mask="99999-999" placeholder="99999-999" ngModel name="CEP" ngModel #cep="ngModel" [required]="true"></p-inputMask>
+                <p-inputMask mask="99999-999" placeholder="99999-999"  name="CEP" [(ngModel)]="pessoa.endereco.cep" #cep="ngModel" [required]="true"></p-inputMask>
 
 
                 <app-message [control]="cep.control" error="required" text="Informe um CEP"></app-message>
             </div>
             <div class="col-12 md:col-6 p-fluid">
                 <label>Cidade</label>
-                <input pInputText type="text" ngModel name="cidade" ngModel #cidade="ngModel" required minlength="4">
+                <input pInputText type="text" name="cidade" [(ngModel)]="pessoa.endereco.cidade" #cidade="ngModel" required minlength="4">
 
                 <app-message [control]="cidade.control" error="required" text="Informe uma cidade"></app-message>
                 <app-message [control]="cidade.control" error="minlength" text="Mínimo de {{cidade.errors?.['minlength']?.requiredLength}} caracteres"></app-message>
             </div>
             <div class="col-12 md:col-6 p-fluid">
                 <label>Estado</label>
-                <input pInputText type="text" ngModel name="estado" ngModel #estado="ngModel" [required]="true">
+                <input pInputText type="text" name="estado" [(ngModel)]="pessoa.endereco.estado" #estado="ngModel" [required]="true">
 
                 <app-message [control]="estado.control" error="required" text="Informe um estado"></app-message>
             </div>
