@@ -73,4 +73,20 @@ export class PessoaService {
 
         return firstValueFrom(this.http.post<Pessoa>(this.pessoasUrl, pessoa, { headers }));
   }
+  atualizar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new HttpHeaders()
+
+
+    return firstValueFrom(this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa, { headers }))
+
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Pessoa> {
+    const headers = new HttpHeaders()
+
+
+      return firstValueFrom(this.http.get<Pessoa>(`${this.pessoasUrl}/${codigo}`, { headers }))
+  }
+
+
  }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { PessoaFiltro, PessoaService } from '../pessoa.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -16,8 +17,11 @@ export class PessoasPesquisaComponent{
     @ViewChild('grid') grid: any;
 
     constructor(private pessoaService: PessoaService, private messageService: MessageService,
-        private confirmation: ConfirmationService, private errorHandler: ErrorHandlerService){ }
+        private confirmation: ConfirmationService, private errorHandler: ErrorHandlerService, private title: Title){ }
 
+    ngOnInit() {
+        this.title.setTitle('Pesquisa de pessoas');
+    }
 
     pesquisar(pagina: number = 0) {
         this.filtro.pagina = pagina;

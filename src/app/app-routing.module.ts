@@ -8,8 +8,7 @@ import { NgModule } from "@angular/core";
 
 const routes: Routes =[
     {path: '', redirectTo: 'lancamentos', pathMatch: 'full'},
-    {path:'pessoas', component: PessoasPesquisaComponent},
-    {path:'pessoas/nova', component: PessoasCadastroComponent},
+
     {path:'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},
     {path:'**', redirectTo: 'pagina-nao-encontrada'},
 ]

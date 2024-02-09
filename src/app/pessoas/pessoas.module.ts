@@ -17,6 +17,7 @@ import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { TooltipModule } from 'primeng/tooltip';
 import { SharedModule } from '../shared/shared.module';
+import { PessoasRoutingModule } from './pessoas-routing.module';
 
 
 
@@ -42,7 +43,8 @@ import { SharedModule } from '../shared/shared.module';
     DropdownModule,
     InputNumberModule,
     InputMaskModule,
-    SharedModule
+    SharedModule,
+    PessoasRoutingModule
   ],
   exports: []
 })
