@@ -9,5 +9,9 @@ export class NavbarComponent {
 
     exibindoMenu = false;
 
+    fecharMenu():void {
+        this.exibindoMenu = false;
+    }
+
 
 }

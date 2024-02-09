@@ -5,19 +5,24 @@ import { NavbarComponent } from './navbar/navbar.component';
 import localePt from '@angular/common/locales/pt';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
-import { MessageService, ConfirmationService } from 'primeng/api';
+import { MessageService, ConfirmationService, TranslationKeys } from 'primeng/api';
 import { LancamentoService } from '../lancamentos/lancamento.service';
+import { RouterModule } from '@angular/router';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { Title } from '@angular/platform-browser';
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     CommonModule,
     ToastModule,
     ConfirmDialogModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,
@@ -27,7 +32,7 @@ registerLocaleData(localePt, 'pt-BR');
   providers: [
     DatePipe,
     {provide: LOCALE_ID, useValue: 'pt-BR' },
-    MessageService, ConfirmationService, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
+    MessageService, ConfirmationService, Title, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
   ]
 })
 

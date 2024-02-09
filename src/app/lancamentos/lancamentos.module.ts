@@ -17,6 +17,8 @@ import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { TooltipModule } from 'primeng/tooltip';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 
 
 
@@ -31,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
     BrowserModule,
     FormsModule,
 
+
     ButtonModule,
     InputTextModule,
     TableModule,
@@ -42,11 +45,9 @@ import { SharedModule } from '../shared/shared.module';
     DropdownModule,
     InputNumberModule,
     InputMaskModule,
-    SharedModule
+    SharedModule,
+    LancamentosRoutingModule
   ],
-  exports: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
-  ]
+  exports: []
 })
 export class LancamentosModule { }
