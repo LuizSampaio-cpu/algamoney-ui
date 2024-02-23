@@ -4,7 +4,7 @@ import { Pessoa } from '../core/model';
 import { firstValueFrom } from 'rxjs';
 
 export class PessoaFiltro {
-    nome: string = '';
+    nome?: string;
     pagina: number = 0;
     itensPorPagina: number = 5;
 }

@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 import { MessageService, ConfirmationService } from 'primeng/api';
+import { Injector } from '@angular/core';
 
 import { LancamentoFiltro, LancamentoService } from './../lancamento.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'src/app/seguranca/auth.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -16,9 +18,11 @@ export class LancamentosPesquisaComponent implements OnInit {
   totalRegistros = 0;
   filtro = new LancamentoFiltro()
   lancamentos: any[] = [];
+ // injector!: Injector;
   @ViewChild('grid') grid: any;
 
   constructor(
+    private auth: AuthService,
     private lancamentoService: LancamentoService,
     private messageService: MessageService,
     private confirmation: ConfirmationService,
@@ -27,7 +31,9 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Pesquisa de lançamentos')
+    //const authService = this.injector.get(AuthService)
   }
+
 
   pesquisar(pagina = 0): void {
     this.filtro.pagina = pagina;
@@ -66,4 +72,10 @@ export class LancamentosPesquisaComponent implements OnInit {
         this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
     })
   }
+
+  naoTemPermissao(permissao: string) {
+    //return !this.auth.temPermissao(permissao);
+    console.log(permissao);
+  }
+
 }

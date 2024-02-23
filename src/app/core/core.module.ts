@@ -10,13 +10,18 @@ import { LancamentoService } from '../lancamentos/lancamento.service';
 import { RouterModule } from '@angular/router';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../seguranca/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
+
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent
   ],
   imports: [
     CommonModule,
@@ -27,12 +32,13 @@ registerLocaleData(localePt, 'pt-BR');
   exports: [
     NavbarComponent,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+
   ],
   providers: [
     DatePipe,
     {provide: LOCALE_ID, useValue: 'pt-BR' },
-    MessageService, ConfirmationService, Title, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
+    MessageService, ConfirmationService, Title, AuthService, JwtHelperService, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
   ]
 })
 
