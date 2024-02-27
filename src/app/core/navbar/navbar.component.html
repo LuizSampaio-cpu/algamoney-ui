@@ -11,7 +11,7 @@
         <li class="navbar-usuario">{{auth.jwtPayload?.nome}}</li>
         <li class="navbar-menuItem" routerLinkActive="ativo" *ngIf="temPermissao('ROLE_PESQUISAR_LANCAMENTO')" ><a routerLink="/lancamentos">Lançamentos</a></li>
         <li class="navbar-menuItem" routerLinkActive="ativo" *ngIf="temPermissao('ROLE_PESQUISAR_PESSOA')"><a routerLink="/pessoas">Pessoas</a></li>
-        <li class="navbar-menuItem"><a href="#">Logout</a></li>
+        <li class="navbar-menuItem"><a href="#" (click)="logout()">Logout</a></li>
     </ul>
 
 </nav>

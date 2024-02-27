@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Lancamento } from '../core/model';
 import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export class LancamentoFiltro {
   descricao?: string
@@ -17,12 +18,14 @@ export class LancamentoFiltro {
 })
 export class LancamentoService {
 
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  lancamentosUrl: string;
 
   constructor(
     private http: HttpClient,
     private datePipe: DatePipe
-  ) { }
+  ) {
+    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`
+  }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
     const headers = new HttpHeaders()

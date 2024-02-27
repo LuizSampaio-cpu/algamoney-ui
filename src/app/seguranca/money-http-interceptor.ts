@@ -16,6 +16,10 @@ export class MoneyHttpInterceptor implements HttpInterceptor {
       return from(this.auth.obterNovoAccessToken())
         .pipe(
           mergeMap(() => {
+            if (this.auth.isAccessTokenInvalid()){
+                //throw new NotAuthenticatedError() (classe não existe mais)
+                console.log('Não autenticado')
+            }
             req = req.clone({
               setHeaders: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`

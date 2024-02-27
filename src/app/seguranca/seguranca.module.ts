@@ -8,6 +8,7 @@ import { SegurancaRoutingModule } from "./seguranca-routing.module";
 import { JwtHelperService, JwtModule } from "@auth0/angular-jwt";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MoneyHttpInterceptor } from "./money-http-interceptor";
+import { LogoutService } from "./logout.service";
 
 
 export function tokenGetter(): string {
@@ -40,7 +41,7 @@ export function tokenGetter(): string {
         provide: HTTP_INTERCEPTORS,
         useClass: MoneyHttpInterceptor,
         multi: true
-      }]
+      }, LogoutService]
 })
 
 

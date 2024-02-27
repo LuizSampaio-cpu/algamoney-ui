@@ -2,13 +2,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Token } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  oauthTokenUrl = 'http://localhost:8080/oauth/token';
+  oauthTokenUrl = environment.apiUrl + '/oauth2/token';
   jwtPayload: any;
 
   constructor(
@@ -95,6 +96,12 @@ export class AuthService {
         }
 
     }    return false;
+  }
+
+  limparAccessToken() {
+    localStorage.removeItem('token')
+
+    this.jwtPayload = null;
   }
 
 }
