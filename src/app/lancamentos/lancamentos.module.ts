@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
@@ -19,6 +19,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { LancamentosRoutingModule } from './lancamentos-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -30,21 +31,20 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
 ],
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
 
-
-    ButtonModule,
+    InputNumberModule,
     InputTextModule,
+    ButtonModule,
     TableModule,
-    TabViewModule,
     TooltipModule,
+    InputTextModule,
     CalendarModule,
-    BrowserAnimationsModule,
     SelectButtonModule,
     DropdownModule,
-    InputNumberModule,
-    InputMaskModule,
+
     SharedModule,
     LancamentosRoutingModule
   ],

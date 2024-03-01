@@ -5,9 +5,9 @@ import { PessoasPesquisaComponent } from "./pessoas-pesquisa/pessoas-pesquisa.co
 
 
 const routes: Routes =[
-    {path:'pessoas', component: PessoasPesquisaComponent},
-    {path:'pessoas/nova', component: PessoasCadastroComponent},
-    {path:'pessoas/:codigo', component: PessoasCadastroComponent}
+    {path:'', component: PessoasPesquisaComponent},
+    {path:'nova', component: PessoasCadastroComponent},
+    {path:':codigo', component: PessoasCadastroComponent}
 ]
 
 @NgModule({

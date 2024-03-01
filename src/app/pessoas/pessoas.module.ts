@@ -18,6 +18,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { TooltipModule } from 'primeng/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { PessoasRoutingModule } from './pessoas-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -29,20 +30,15 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
+    RouterModule,
 
-    ButtonModule,
     InputTextModule,
+    ButtonModule,
     TableModule,
-    TabViewModule,
     TooltipModule,
-    CalendarModule,
-    BrowserAnimationsModule,
-    SelectButtonModule,
-    DropdownModule,
-    InputNumberModule,
     InputMaskModule,
+
     SharedModule,
     PessoasRoutingModule
   ],
