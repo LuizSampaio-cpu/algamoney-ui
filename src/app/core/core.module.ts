@@ -13,6 +13,7 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from '../seguranca/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -38,7 +39,7 @@ registerLocaleData(localePt, 'pt-BR');
   providers: [
     DatePipe,
     {provide: LOCALE_ID, useValue: 'pt-BR' },
-    MessageService, ConfirmationService, Title, AuthService, JwtHelperService, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
+    MessageService, ConfirmationService, Title, AuthService, DashboardService, JwtHelperService, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
   ]
 })
 
