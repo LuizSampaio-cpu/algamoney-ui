@@ -19,6 +19,9 @@ import { TooltipModule } from 'primeng/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { PessoasRoutingModule } from './pessoas-routing.module';
 import { RouterModule } from '@angular/router';
+import { PanelModule } from 'primeng/panel';
+import { DialogModule } from 'primeng/dialog';
+import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa-cadastro-contato.component'
 
 
 
@@ -26,12 +29,15 @@ import { RouterModule } from '@angular/router';
   declarations: [
     PessoasCadastroComponent,
     PessoasPesquisaComponent,
-    PessoasGridComponent
+    PessoasGridComponent,
+    PessoaCadastroContatoComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
+    PanelModule,
+    DialogModule,
 
     InputTextModule,
     ButtonModule,

@@ -8,12 +8,26 @@ export class Endereco {
     estado?: string;
 }
 
+export class Contato {
+    codigo?: number;
+    nome?: string;
+    email?: string;
+    telefone?: string
+
+    constructor(codigo?:number, nome?: string, email?:string, telefone?:string){
+        this.nome = nome;
+        this.codigo = codigo;
+        this.email = email;
+        this.telefone = telefone
+    }
+}
 
 export class Pessoa {
     codigo?: number;
     nome?: string;
     endereco = new Endereco();
     ativo = true;
+    contatos = new Array<Contato>
 
 }
 

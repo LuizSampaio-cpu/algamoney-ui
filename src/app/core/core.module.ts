@@ -1,6 +1,7 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RelatoriosService } from '../relatorios/relatorios.service';
 
 import localePt from '@angular/common/locales/pt';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -39,7 +40,7 @@ registerLocaleData(localePt, 'pt-BR');
   providers: [
     DatePipe,
     {provide: LOCALE_ID, useValue: 'pt-BR' },
-    MessageService, ConfirmationService, Title, AuthService, DashboardService, JwtHelperService, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
+    MessageService, ConfirmationService, Title, AuthService, DashboardService, JwtHelperService, RelatoriosService, LancamentoService, {provide: LOCALE_ID, useValue:'pt-BR'}
   ]
 })
 

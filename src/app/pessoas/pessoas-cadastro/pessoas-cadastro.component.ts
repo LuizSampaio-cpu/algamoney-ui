@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PessoaService } from '../pessoa.service';
 import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
-import { NgForm } from '@angular/forms';
-import { Pessoa } from 'src/app/core/model';
+import { FormControl, NgForm } from '@angular/forms';
+import { Contato, Pessoa } from 'src/app/core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -13,7 +13,14 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./pessoas-cadastro.component.css']
 })
 export class PessoasCadastroComponent implements OnInit {
+
+
+
+
   pessoa = new Pessoa();
+  exibindoFormularioContato = false;
+  contato?: Contato;
+  contatoIndex?: number;
 
   constructor(
     private pessoaService: PessoaService,
@@ -88,6 +95,32 @@ export class PessoasCadastroComponent implements OnInit {
 
   atualizarTituloEdicao() {
     this.title.setTitle(`Edição de pessoa: ${this.pessoa.nome}`);
+  }
+
+  prepararNovoContato() {
+    this.exibindoFormularioContato = true;
+    this.contato = new Contato();
+    this.contatoIndex = this.pessoa.contatos.length;
+  }
+
+  confirmarContato(frm: NgForm) {
+    this.pessoa.contatos[this.contatoIndex!] = this.clonarContato(this.contato!);
+    this.exibindoFormularioContato = false;
+    frm.reset();
+  }
+
+  clonarContato(contato: Contato): Contato {
+    return new Contato(contato.codigo, contato.nome, contato.email, contato.telefone);
+  }
+
+  prepararEdicaoContato(contato:Contato, index: number){
+    this.contato = this.clonarContato(contato)
+    this.exibindoFormularioContato = true
+    this.contatoIndex = index
+  }
+
+  removerContato(index: number) {
+    this.pessoa.contatos.splice(index, 1)
   }
 
 }
