@@ -55,6 +55,8 @@ export class LancamentoCadastroComponent implements OnInit {
     this.title.setTitle('Cadastro de lancamentos')
   }
 
+
+
   configurarFormulario() {
     this.formulario = this.formBuild.group({
         codigo: [null],
@@ -71,7 +73,10 @@ export class LancamentoCadastroComponent implements OnInit {
             codigo: [null, Validators.required],
             nome: []
         }),
-        observacao: []
+        observacao: [],
+        anexo: [],
+        urlAnexo: []
+
 
     })
   }
@@ -161,5 +166,25 @@ export class LancamentoCadastroComponent implements OnInit {
     this.title.setTitle(`Ediçao de lançamento: ${this.formulario.get('descricao')?.value}`)
   }
 
+  get uploadHeaders() {
+    return this.lancamentoService.uploadHeaders()
+  }
+
+  get urlUploadAnexo(){
+    return this.lancamentoService.urlUploadAnexo()
+  }
+
+  aoTerminarUploadAnexo(event: any) {
+    const anexo = event.originalEvent.body;
+    this.formulario.patchValue({
+      anexo: anexo.nome,
+      urlAnexo: anexo.url.replace('\\\\', 'https://')
+    });
+  }
+
+  get nomeAnexo() {
+    const nome = this.formulario.get('anexo')?.value
+    return this.formulario.get('anexo')?.value
+  }
 
 }

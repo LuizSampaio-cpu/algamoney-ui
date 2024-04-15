@@ -116,4 +116,12 @@ export class LancamentoService {
     }
   }
 
+  uploadHeaders(){
+    return new HttpHeaders().append('Auhorization', 'Bearer'+ localStorage.getItem('token'))
+  }
+
+  urlUploadAnexo(): string {
+    return `${this.lancamentosUrl}/anexo`
+  }
+
 }

@@ -20,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FileUploadModule  } from 'primeng/fileupload'
 
 
 
@@ -44,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
+    FileUploadModule,
 
     SharedModule,
     LancamentosRoutingModule

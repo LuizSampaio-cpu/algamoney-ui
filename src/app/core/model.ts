@@ -45,5 +45,7 @@ export class Lancamento {
     observacao: string = '';
     pessoa = new Pessoa();
     categoria = new Categoria();
+    anexo?: string
+    urlAnexo?: string
 
 }
